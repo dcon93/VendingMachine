@@ -38,6 +38,16 @@ public abstract class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		Product otherProduct = (Product)obj;
+		return this.getName().equals(otherProduct.getName()) && 
+				this.getPrice() == (otherProduct.getPrice()) && 
+				this.getType().equals(otherProduct.getType());
+				
+	}
 
 
 }

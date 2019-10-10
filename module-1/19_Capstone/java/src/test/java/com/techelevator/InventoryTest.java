@@ -20,4 +20,14 @@ public class InventoryTest {
 		
 		Assert.assertEquals(c,testInventory.convertArraytoProduct(newstring));
 	}
+	
+	@Test
+	public void test_product_equals_works() {
+		Product c1 = new Chips("Doritos", 302);
+		Product c2 = new Chips("Doritos", 302);
+		
+		Assert.assertEquals(c1, c2);
+	}
+	
+	
 }

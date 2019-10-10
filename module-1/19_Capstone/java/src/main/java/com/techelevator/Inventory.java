@@ -2,6 +2,7 @@ package com.techelevator;
 
 import java.io.File;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,10 +41,11 @@ public class Inventory {
 
 	}
 
-	public Product convertArraytoProduct(String[] currentLineArr) {
+	public static Product convertArraytoProduct(String[] currentLineArr) {
 		
-		double price = Double.parseDouble(currentLineArr[2]);
-		int priceInPennies = (int)price * 100;
+		BigDecimal price = new BigDecimal(currentLineArr[2]);
+		// multiplies big decimal by 100 and turns it into an int
+		int priceInPennies = price.multiply(BigDecimal.valueOf(100)).intValue();
 		
 		if (currentLineArr[3].equalsIgnoreCase("chip")) {
 			Product p = new Chips(currentLineArr[1], priceInPennies);
