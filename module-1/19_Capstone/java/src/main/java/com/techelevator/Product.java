@@ -1,7 +1,5 @@
 package com.techelevator;
 
-import org.w3c.dom.NameList;
-
 public abstract class Product {
 	private String name;
 	private String type;
@@ -31,6 +29,14 @@ public abstract class Product {
 
 	public int getSound() {
 		return price;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 
