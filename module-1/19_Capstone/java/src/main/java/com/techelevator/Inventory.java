@@ -10,19 +10,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Inventory {
+
 	// read vendingmachine.csv
 
 	static File inputFile = new File("vendingmachine.csv");
 	static Scanner inputStream = null;
-	
-	
-	public static void displayInventoryFromFile() {
-		
 
-	}
-	
-	
-	public void stockInventory() {
+	public static void stockInventory() {
 		try {
 			inputStream = new Scanner(inputFile);
 		} catch (Exception e) {
@@ -41,9 +35,33 @@ public class Inventory {
 		String productName = currentLineArr[1];
 		String priceStr = currentLineArr[2];
 		String productType = currentLineArr[3];
-		
-		int price = Integer.parseInt(priceStr);
 
-	}  
+		convertArraytoProduct(currentLineArr);
+
+	}
+
+	public Product convertArraytoProduct(String[] currentLineArr) {
+		
+		double price = Double.parseDouble(currentLineArr[2]);
+		int priceInPennies = (int)price * 100;
+		
+		if (currentLineArr[3].equalsIgnoreCase("chip")) {
+			Product p = new Chips(currentLineArr[1], priceInPennies);
+			
+			return p;
+		} else if (currentLineArr[3].equalsIgnoreCase("Candy")) {
+			Product p = new Candy(currentLineArr[1], priceInPennies);
+			
+			return p;
+		} else if (currentLineArr[3].equalsIgnoreCase("Drink")) {
+			Product p = new Drink(currentLineArr[1], priceInPennies);
+			
+			return p;
+		} else if (currentLineArr[3].equalsIgnoreCase("Gum")) {
+			Product p = new Gum(currentLineArr[1], priceInPennies);
+			
+			return p;
+		} return null;
+	}
 
 }
