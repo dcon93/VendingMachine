@@ -45,19 +45,23 @@ public class Inventory {
 	// get the product from inventory map
 	// check quantity in quantity map and decrement it
 	// May need to change return type to return a Product
-	public void dispenseProduct(String mapKey) {
+	public Product dispenseProduct(String mapKey) {
 
-		if (inventoryMap.get(mapKey) == null) {
-			System.out.println("This product key does not exist, please enter another selection.");
-		} else if (quantityMap.get(mapKey) == 0) {
-			System.out.println("We apologize. This item is currently sold out. Please make another selection.");
-		} else if (inventoryMap.get(mapKey) != null && (quantityMap.get(mapKey) >= 1)) {
+		if (inventoryMap.get(mapKey) != null && (quantityMap.get(mapKey) >= 1)) {
 			quantityMap.put(mapKey, numberOfItems - 1);
+			return inventoryMap.get(mapKey);
+		}
+		else {
+			return null;
 		}
 	}
 
 	public Product getProductFromSlot(String slotID) {
 		return inventoryMap.get(slotID.toUpperCase());
+	}
+	
+	public Integer getProductQuantityFromSlot(String slotID) {
+		return quantityMap.get(slotID.toUpperCase());
 	}
 
 	public static Product convertArraytoProduct(String[] currentLineArr) {

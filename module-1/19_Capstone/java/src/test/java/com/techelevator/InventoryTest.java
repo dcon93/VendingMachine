@@ -44,6 +44,49 @@ public class InventoryTest {
 		Assert.assertEquals(c1, c2);
 	}
 	
+	// check quantity of quantitymap after calling stockInventory()
+	
+	@Test
+	public void stockInventory_should_set_quantityMap_values_to_5() {
+		testInventory.stockInventory();
+		
+		int quantity = testInventory.getProductQuantityFromSlot("b2");
+		
+		Assert.assertEquals(quantity, 5);
+	}
+	
+	// return product after dispensing and check that quantity has decreased by 1
+	
+	@Test
+	public void dispenseProduct_returns_product_and_decrements_quantity() {
+		testInventory.stockInventory();
+		
+		Product expected = testInventory.dispenseProduct("C4");
+		
+		Product actual = new Drink("Heavy", 150);
+		
+		int quantity = testInventory.getProductQuantityFromSlot("C4");
+		
+		Assert.assertEquals(expected, actual);
+		Assert.assertEquals(quantity, 4);
+		
+	}
+	// returns null when quantity is 0
+	@Test
+	public void dispenseProduct_returns_null_when_quantityMap_value_is_0 () {
+		testInventory.stockInventory();
+		
+		testInventory.dispenseProduct("d3");
+		testInventory.dispenseProduct("d3");
+		testInventory.dispenseProduct("d3");
+		testInventory.dispenseProduct("d3");
+		testInventory.dispenseProduct("d3");
+		
+		Product p = testInventory.dispenseProduct("d3");
+		Assert.assertEquals(p, null);	
+		
+	}
+	
 	
 	
 	
