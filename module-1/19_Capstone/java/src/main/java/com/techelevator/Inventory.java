@@ -48,7 +48,7 @@ public class Inventory {
 	public Product dispenseProduct(String mapKey) {
 
 		if (inventoryMap.get(mapKey) != null && (quantityMap.get(mapKey) >= 1)) {
-			quantityMap.put(mapKey, numberOfItems - 1);
+			quantityMap.put(mapKey, quantityMap.get(mapKey) - 1);
 			return inventoryMap.get(mapKey);
 		}
 		else {
