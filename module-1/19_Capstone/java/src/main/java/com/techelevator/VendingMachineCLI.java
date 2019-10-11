@@ -31,17 +31,38 @@ public class VendingMachineCLI {
 			
 			if(choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 				//print message asking for money and then print the amount
+				
+				System.out.println("Insert Dollars >>>");
+				String fedMoney = inputScanner.nextLine();
+				int moneyDeposited = Integer.parseInt(fedMoney);
+				
+				vendingMachine.getMoney().addMoneyInDollars(moneyDeposited);
+				
 				//once you have the amount you just call your vending machine and add money
 				
 				
 			}else if(choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 				//prompt them to get the slot
+				
+				System.out.println("Enter Product Key >>>");
+				
+				String itemSelected = inputScanner.nextLine();
+				
+				if(vendingMachine.getInventory().inventoryMap.containsKey(itemSelected)) {
+					System.out.println("Vended a " + vendingMachine.vend(itemSelected).getName());
+					
+				} else {
+					System.out.println("Couldn't find item at " + itemSelected);
+				}
+				
+				
+				
 				//need to use the inventory to see if it is valid and if there is any to dispense
 				//need to call your vend method and if it returns a product then it worked and if didnt you didn't have enough money
 				
 			}else if(choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 				//make change
-				
+				System.out.println(vendingMachine.returnChange());
 				
 				//finish transaction
 				return;

@@ -18,13 +18,13 @@ public class VendingMachine {
 			return null;
 		}
 		
-		int amountToWithdraw = inventory.getProductFromSlot(slotID).getPrice() * 100;
+		int amountToWithdraw = inventory.getProductFromSlot(slotID).getPrice();
 		int currentBalance = money.getBalanceInPennies();
 		
 		if(currentBalance >= amountToWithdraw) {	
 			
 			Product p = inventory.dispenseProduct(slotID);
-			currentBalance = currentBalance - amountToWithdraw;
+			money.withdrawMoneyInCents(amountToWithdraw);
 			return p;
 			
 		}
