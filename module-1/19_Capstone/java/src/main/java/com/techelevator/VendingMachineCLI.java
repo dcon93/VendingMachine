@@ -25,7 +25,7 @@ public class VendingMachineCLI {
 	
 	public void runPurchaseMenu() {
 		while(true) {
-			System.out.println("Current Balance: " + vendingMachine.getMoney().getBalanceAsString());
+			System.out.println("Current Money Provided: " + vendingMachine.getMoney().getBalanceAsString());
 			
 			String choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 			
@@ -33,19 +33,24 @@ public class VendingMachineCLI {
 				//print message asking for money and then print the amount
 				
 				System.out.println("Insert Dollars >>>");
+				try {
 				String fedMoney = inputScanner.nextLine();
 				int moneyDeposited = Integer.parseInt(fedMoney);
 				
+				
 				vendingMachine.getMoney().addMoneyInDollars(moneyDeposited);
+				} catch (NumberFormatException nfe) {
+					System.out.println("Please insert dollars only!");
+				}
 				
 				//once you have the amount you just call your vending machine and add money
 				
 				
-			}else if(choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
+			} else if(choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 				//prompt them to get the slot
 				
 				System.out.println("Enter Product Key >>>");
-				
+				try {
 				String itemSelected = inputScanner.nextLine();
 				
 				if(vendingMachine.getInventory().inventoryMap.containsKey(itemSelected.toUpperCase())) {
@@ -54,13 +59,15 @@ public class VendingMachineCLI {
 				} else {
 					System.out.println("Couldn't find item at " + itemSelected);
 				}
-				
+				} catch (NullPointerException npe) {
+					System.out.println("Item is sold out. Please select a different item.");
+				}
 				
 				
 				//need to use the inventory to see if it is valid and if there is any to dispense
 				//need to call your vend method and if it returns a product then it worked and if didnt you didn't have enough money
 				
-			}else if(choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+			} else if(choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 				//make change
 				System.out.println(vendingMachine.returnChange());
 				
