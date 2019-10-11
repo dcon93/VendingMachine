@@ -8,13 +8,13 @@ public class Money {
 		balance = 0;
 	}
 
-	public int addMoney(int amountToDeposit) {
-		balance = balance + (amountToDeposit * 100);
+	public int addMoneyInDollars(int amountToDepositInDollars) {
+		balance = balance + (amountToDepositInDollars * 100);
 		return this.balance;
 	}
 
-	public int withdrawMoney(int amountToWithdraw) {
-		balance = balance - (amountToWithdraw * 100);
+	public int withdrawMoneyInCents(int amountToWithdrawInCents) {
+		balance = balance - (amountToWithdrawInCents);
 		return this.balance;
 	}
 

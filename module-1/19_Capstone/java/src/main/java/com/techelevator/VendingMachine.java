@@ -40,10 +40,10 @@ public class VendingMachine {
 	
 	
 	
-	public boolean insertMoney (int insertAmount) {
+	public boolean insertMoney (int insertAmountInCents) {
 		// insertAmount == 100 || insertAmount == 200 || insertAmount == 500 || insertAmount == 1000
-		if (insertAmount % 100 == 0) {
-			this.money.addMoney(insertAmount);
+		if (insertAmountInCents % 100 == 0) {
+			this.money.addMoneyInDollars(insertAmountInCents / 100);
 			return true;
 		} 
 			return false;

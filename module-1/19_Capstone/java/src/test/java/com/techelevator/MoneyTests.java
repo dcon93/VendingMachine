@@ -18,14 +18,14 @@ public class MoneyTests {
 
 	@Test
 	public void check_that_Strings_format_properly_on_balance() {
-		testMoney.addMoney(5);
+		testMoney.addMoneyInDollars(5);
 
 		Assert.assertEquals("$5.00", testMoney.getBalanceAsString());
 	}
 
 	@Test
 	public void check_if_add_money_adds_money_and_multiplies_by_100() {
-		int currentBalance = testMoney.addMoney(12);
+		int currentBalance = testMoney.addMoneyInDollars(12);
 
 		Assert.assertEquals(1200, currentBalance);
 
@@ -33,8 +33,8 @@ public class MoneyTests {
 	
 	@Test
 	public void check_if_withdraw_money_works() {
-		int currentBalance = testMoney.addMoney(15);
-		currentBalance = testMoney.withdrawMoney(15);
+		int currentBalance = testMoney.addMoneyInDollars(15);
+		currentBalance = testMoney.withdrawMoneyInCents(1500);
 		
 		Assert.assertEquals(0, currentBalance);
 		
@@ -42,12 +42,15 @@ public class MoneyTests {
 	
 	@Test
 	public void check_if_change_returns_correct_amount_of_quarters() {
-		int balance = testMoney.addMoney(2);
+		int balance = testMoney.addMoneyInDollars(2);
 		
 		String expectedString = "Your change is 8 quarters, 0 dimes, and 0 nickels.";
 		String expectedString2 = "Your change is 7 quarters, 1 dimes, and 1 nickels.";
 		
+		Assert.assertEquals(expectedString, testMoney.returnChangeAsCoins());
+		
+		testMoney.addMoneyInDollars(2);
+		testMoney.withdrawMoneyInCents(10);
 		Assert.assertEquals(expectedString2, testMoney.returnChangeAsCoins());
-		//Assert.assertEquals(expectedString2, testMoney.returnChangeAsCoins(190));
 	}
 }
