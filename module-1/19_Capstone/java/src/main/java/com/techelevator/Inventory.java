@@ -1,13 +1,10 @@
 package com.techelevator;
 
 import java.io.File;
-import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Inventory {
@@ -16,8 +13,11 @@ public class Inventory {
 
 	static File inputFile = new File("vendingmachine.csv");
 	static Scanner inputStream = null;
+	
+	Map<String, Product> inventoryMap = new HashMap<String, Product>();
+	Map<String, Integer> quantityMap = new HashMap<String, Integer>();
 
-	public static void stockInventory() {
+	public void stockInventory() {
 		try {
 			inputStream = new Scanner(inputFile);
 		} catch (Exception e) {
@@ -26,19 +26,30 @@ public class Inventory {
 		}
 
 		String[] currentLineArr = new String[4];
+		
 
 		while (inputStream.hasNext()) {
 			String line = inputStream.nextLine();
-			currentLineArr = line.split("|");
+			currentLineArr = line.split("[|]");
+			
+			String mapKey = currentLineArr[0].toUpperCase();
+			
+			inventoryMap.put(mapKey, convertArraytoProduct(currentLineArr));
+			quantityMap.put(mapKey, 5);
 		}
 
-		String slotID = currentLineArr[0];
-		String productName = currentLineArr[1];
-		String priceStr = currentLineArr[2];
-		String productType = currentLineArr[3];
 
-		convertArraytoProduct(currentLineArr);
-
+		// convertArraytoProduct(currentLineArr);
+	}
+	
+	// dispense product should take a string and return a product
+	//get the product from inventory map
+	//check quantity in quantity map and decrement it
+	
+	
+	
+	public Product getProductFromSlot(String slotID) {
+		return inventoryMap.get(slotID.toUpperCase());
 	}
 
 	public static Product convertArraytoProduct(String[] currentLineArr) {
