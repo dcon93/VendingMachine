@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import org.junit.Test;
+
 import org.junit.Assert;
 import org.junit.Before;
 
@@ -41,10 +42,12 @@ public class MoneyTests {
 	
 	@Test
 	public void check_if_change_returns_correct_amount_of_quarters() {
+		int balance = testMoney.addMoney(2);
+		
 		String expectedString = "Your change is 8 quarters, 0 dimes, and 0 nickels.";
 		String expectedString2 = "Your change is 7 quarters, 1 dimes, and 1 nickels.";
 		
-		Assert.assertEquals(expectedString, testMoney.returnChangeAsCoins(200));
-		Assert.assertEquals(expectedString2, testMoney.returnChangeAsCoins(190));
+		Assert.assertEquals(expectedString2, testMoney.returnChangeAsCoins());
+		//Assert.assertEquals(expectedString2, testMoney.returnChangeAsCoins(190));
 	}
 }
