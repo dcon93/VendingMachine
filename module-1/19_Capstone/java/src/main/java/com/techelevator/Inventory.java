@@ -16,7 +16,7 @@ public class Inventory {
 
 	Map<String, Product> inventoryMap = new HashMap<String, Product>();
 	Map<String, Integer> quantityMap = new HashMap<String, Integer>();
-	Integer numberOfItems = 5;
+	int numberOfItems = 5;
 
 	public void stockInventory() {
 		try {
