@@ -19,7 +19,7 @@ public class Money {
 	}
 
 	public int getBalanceInPennies() {
-		return balance;
+		return this.balance;
 	}
 
 	public String getBalanceAsString() {
@@ -30,8 +30,8 @@ public class Money {
 
 	}
 
-	public String returnChangeAsCoins(int balance) {
-		int total = balance;
+	public String returnChangeAsCoins() {
+		int total = this.balance;
 
 		int totalQuartersToReturn = 0;
 		int totalDimesToReturn = 0;
