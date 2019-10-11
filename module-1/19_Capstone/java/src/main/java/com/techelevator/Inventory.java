@@ -1,14 +1,11 @@
 package com.techelevator;
 
-import java.io.BufferedReader;
+
 import java.io.File;
-import java.io.FileReader;
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
-import java.io.IOException;
 
 public class Inventory {
 
