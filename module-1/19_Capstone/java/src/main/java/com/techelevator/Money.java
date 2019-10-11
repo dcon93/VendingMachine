@@ -8,12 +8,14 @@ public class Money {
 		balance = 0;
 	}
 
-	public void addMoney(int amountToDeposit) {
+	public int addMoney(int amountToDeposit) {
 		balance = balance + (amountToDeposit * 100);
+		return this.balance;
 	}
 
-	public void withdrawMoney(int amountToWithdraw) {
-		balance = balance - (amountToWithdraw);
+	public int withdrawMoney(int amountToWithdraw) {
+		balance = balance - (amountToWithdraw * 100);
+		return this.balance;
 	}
 
 	public int getBalanceInPennies() {
