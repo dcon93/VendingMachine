@@ -48,8 +48,9 @@ public class VendingMachineCLI {
 				
 				String itemSelected = inputScanner.nextLine();
 				
-				if(vendingMachine.getInventory().inventoryMap.containsKey(itemSelected)) {
-					System.out.println("Vended a " + vendingMachine.vend(itemSelected).getName());
+				if(vendingMachine.getInventory().inventoryMap.containsKey(itemSelected.toUpperCase())) {
+					System.out.println(vendingMachine.vend(itemSelected.toUpperCase()).getName() 
+							+"         " + vendingMachine.vend(itemSelected.toUpperCase()).getSound());
 					
 				} else {
 					System.out.println("Couldn't find item at " + itemSelected);

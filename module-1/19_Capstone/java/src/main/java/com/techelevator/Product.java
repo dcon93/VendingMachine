@@ -27,8 +27,8 @@ public abstract class Product {
 		return price;
 	}
 
-	public int getSound() {
-		return price;
+	public String getSound() {
+		return sound;
 	}
 	
 	public void setName(String name) {
