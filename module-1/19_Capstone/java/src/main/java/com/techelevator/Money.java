@@ -1,46 +1,64 @@
 package com.techelevator;
 
 public class Money {
-	private double balance = 0;
-	final static int NICKLE = 5;
-	final static int DIME = 10;
-	final static int QUARTER = 25;
-	final static int DOLLAR = 100;
-	final static int FIVE_DOLLAR = 5;
-	final static int TEN_DOLLAR = 1000;
-	final static int TWENTY_DOLLAR = 2000;
 	
-	
-	private static double insertMoney() {
-		return 0;
-	}
-	
-	
-		public static void changeOut(int change){
-		    int quarters = 0;
-		    int dimes = 0;
-		    int nickels = 0;
-		    while (change >= 25){
-		        quarters = quarters + 1;
-		        change = change - 25;
-		    }
-		    while (change >= 10){
-		        dimes = dimes + 1;
-		        change = change - 10;
-		    }
-		    while (change >= 5){
-		        nickels = nickels + 1;
-		        change = change - 5; 
-		        }
+	public int balance;
+
+	public Money() {
+		balance = 0;
 	}
 
-	public double getBalance() {
+	public void addMoney(int amountToDeposit) {
+		balance = balance + (amountToDeposit * 100);
+	}
+
+	public void withdrawMoney(int amountToWithdraw) {
+		balance = balance - (amountToWithdraw);
+	}
+
+	public int getBalanceInPennies() {
 		return balance;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+	public String getBalanceAsString() {
+		int currentBalanceAsInt = balance;
+		double currentBalanceAsDouble = (currentBalanceAsInt / 100.00);
+		String formattedDoubleAsString = "$" + String.format("%.2f", currentBalanceAsDouble);
+		return formattedDoubleAsString;
+
 	}
-	
-	
+
+	public String returnChangeAsCoins(int balance) {
+		int total = balance;
+
+		int totalQuartersToReturn = 0;
+		int totalDimesToReturn = 0;
+		int totalNickelsToReturn = 0;
+
+		int quarter = 25;
+		int dime = 10;
+		int nickel = 5;
+
+		while (total > 0) {
+			if (total >= quarter) {
+				totalQuartersToReturn++;
+				total -= quarter;
+			} else if (total >= dime) {
+				totalDimesToReturn++;
+				total -= dime;
+			} else if (total >= nickel) {
+				totalNickelsToReturn++;
+				total -= nickel;
+
+			}
+
+		}
+
+		this.balance = 0;
+
+		String returnString = "Your change is " + totalQuartersToReturn + " quarters, " + totalDimesToReturn
+				+ " dimes, " + "and " + totalNickelsToReturn + " nickels.";
+		return returnString;
+	}
+
 }
