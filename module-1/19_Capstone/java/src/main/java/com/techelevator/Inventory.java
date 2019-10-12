@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Inventory {
 
@@ -14,7 +15,7 @@ public class Inventory {
 	static File inputFile = new File("vendingmachine.csv");
 	static Scanner inputStream = null;
 
-	Map<String, Product> inventoryMap = new HashMap<String, Product>();
+	Map<String, Product> inventoryMap = new TreeMap<String, Product>();
 	Map<String, Integer> quantityMap = new HashMap<String, Integer>();
 	int numberOfItems = 5;
 
