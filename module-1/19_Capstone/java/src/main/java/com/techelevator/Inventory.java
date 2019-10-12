@@ -95,7 +95,7 @@ public class Inventory {
 		for ( Map.Entry<String, Product> slot: inventoryMap.entrySet()) {
 			System.out.println(slot.getKey() + "       " 
 		+ slot.getValue().getName() + "          " 
-		+ slot.getValue().getPrice());
+		+ "$" + slot.getValue().getPrice());
 		}
 	}
 }
