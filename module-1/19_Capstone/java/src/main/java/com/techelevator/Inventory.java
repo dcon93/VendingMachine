@@ -93,9 +93,15 @@ public class Inventory {
 	public void printInventory() {
 		
 		for ( Map.Entry<String, Product> slot: inventoryMap.entrySet()) {
+			
+			int priceInt = slot.getValue().getPrice();
+			double priceDouble = (double)priceInt / 100;
+			String priceStr = String.format("%.2f", priceDouble);
+			
+			
 			System.out.println(slot.getKey() + "       " 
 		+ slot.getValue().getName() + "          " 
-		+ "$" + slot.getValue().getPrice());
+		+ "$" + priceStr);
 		}
 	}
 }
