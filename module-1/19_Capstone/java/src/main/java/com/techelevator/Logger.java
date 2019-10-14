@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -18,9 +19,16 @@ public class Logger {
 	}
 
 	private void createNewFile() {
+		
+		
 		try {
+			if(logFile.exists()) {
+				logFile.delete();
+			}
 			logFile.createNewFile();
 		} catch (IOException e) {
+			System.out.println("Vending Machine is out of order.");
+			System.exit(1);
 		}
 	}
 
@@ -35,9 +43,10 @@ public class Logger {
 				afterTransaction);
 
 		try (Writer fileWriter = new FileWriter(logFile, true);
-				BufferedWriter buffered = new BufferedWriter(fileWriter)) {
-			buffered.write(logString + "\n");
+				PrintWriter printer = new PrintWriter(fileWriter)) {
+			printer.println(logString);
 		} catch (IOException e1) {
+			
 		}
 		return logString;
 

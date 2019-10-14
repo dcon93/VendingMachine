@@ -38,7 +38,7 @@ public class VendingMachineCLI {
 				int moneyDeposited = Integer.parseInt(fedMoney);
 				
 				
-				vendingMachine.getMoney().addMoneyInDollars(moneyDeposited);
+				vendingMachine.insertMoney(moneyDeposited * 100);
 				} catch (NumberFormatException nfe) {
 					System.out.println("Please insert dollars only!");
 				}
